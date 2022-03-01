@@ -1,0 +1,17 @@
+# /etc/systemd/system/cronos-node-status.service
+[Unit]
+Description=cronos-node-status
+ConditionPathExists=/home/siw36/bin/cronos-node-status
+After=network.target
+
+[Service]
+Type=simple
+User=siw36
+WorkingDirectory=/home/siw36/bin
+ExecStart=/home/siw36/bin/cronos-node-status
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
