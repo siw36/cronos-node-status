@@ -1,0 +1,55 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>node status</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+
+<style media="screen">
+  body {
+    background-color: black;
+  }
+  p {
+    font-size: 100px;
+    color: white;
+  }
+</style>
+
+
+<script type="text/javascript">
+  function getData(){
+  $.ajax({
+    url: 'http://localhost:80/api/v1/data',
+    type: 'GET',
+    success: function(response){
+      var responseJSON = jQuery.parseJSON(response);
+      if (responseJSON["remote_block"] > responseJSON["local_block"]) {
+        $("#state").text("out of sync")
+        $("#image").attr("src","img/not_stonks.png")
+      } else {
+        $("#state").text("synced")
+        $("#image").attr("src","img/stonks.png")
+      }
+    }
+  });
+}
+
+// Initial loading of data
+getData();
+
+// Starting data queue
+$(document).ready(function(){
+  setInterval(getData,60000);
+});
+</script>
+
+
+<body>
+  <p id="state">it do be like that some times</p>
+  <img id="image" src="#" alt="">
+</body>
