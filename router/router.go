@@ -28,7 +28,7 @@ func Serve() {
 	r.HandleFunc("/api/v1/data", data)
 
 	srv := &http.Server{
-		Addr: fmt.Sprintf("0.0.0.0:%d", 80),
+		Addr: fmt.Sprintf("0.0.0.0:%d", 8081),
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,

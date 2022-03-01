@@ -24,7 +24,7 @@
 <script type="text/javascript">
   function getData(){
   $.ajax({
-    url: 'http://localhost:80/api/v1/data',
+    url: 'http://localhost:8081/api/v1/data',
     type: 'GET',
     success: function(response){
       var responseJSON = jQuery.parseJSON(response);
