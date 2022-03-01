@@ -29,10 +29,10 @@
     success: function(response){
       var responseJSON = jQuery.parseJSON(response);
       if (responseJSON["remote_block"] > responseJSON["local_block"]) {
-        $("#state").text("out of sync")
+        $("#state").text("out of sync ### remote: " + responseJSON["remote_block"] + " local: " + responseJSON["local_block"])
         $("#image").attr("src","img/not_stonks.png")
       } else {
-        $("#state").text("synced")
+        $("#state").text("synced ### remote: " + responseJSON["remote_block"] + " local: " + responseJSON["local_block"])
         $("#image").attr("src","img/stonks.png")
       }
     }
