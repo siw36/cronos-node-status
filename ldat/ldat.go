@@ -49,7 +49,7 @@ type output struct {
 }
 
 func Exec() int {
-	app := "cronosd"
+	app := "/home/siw36/bin/cronosd"
 	arg0 := "status"
 
 	var data output
